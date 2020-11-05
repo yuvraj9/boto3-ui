@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>MAGIC</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+        <link href="{{ url_for('static', filename='css/bootstrap.min.css') }}" rel="stylesheet">
+    </head>
+
+    <body>
+        <script type=text/javascript>
+            $(function() {
+              $('#prevent').on('click', function(e) {
+                e.preventDefault()
+                $.getJSON('/prevent_cluster_downtime',
+                    function(data) {
+                  //do nothing
+                });
+                return false;
+              });
+            });
+        </script>
+        <script type=text/javascript>
+            $(function() {
+              $('#stop').on('click', function(e) {
+                e.preventDefault()
+                $.getJSON('/shutdown_cluster',
+                    function(data) {
+                  //do nothing
+                });
+                return false;
+              });
+            });
+        </script>
+        <script type=text/javascript>
+            $(function() {
+              $('#start').on('click', function(e) {
+                e.preventDefault()
+                $.getJSON('/start_cluster',
+                    function(data) {
+                  //do nothing
+                });
+                return false;
+              });
+            });
+        </script>
+
+        <img src="https://img.icons8.com/clouds/2x/naruto-sign.png" class="rounded float-right" alt="...">
+
+        <blockquote class="blockquote text-center">
+            <h1>Cluster Managment</h1>
+        </blockquote>
+
+        <blockquote class="blockquote text-left">
+            <h2>Remove scheduled action</h2>
+        </blockquote>
+        <button id="prevent" type="button" class="btn btn-primary">Prevent</button>
+
+        <blockquote class="blockquote text-left">
+            <h2>Downscale autoscaling groups</h2>
+        </blockquote>
+        <button id="stop" type="button" class="btn btn-danger">Stop</button>
+
+        <blockquote class="blockquote text-left">
+            <h2>Upscale autoscaling groups</h2>
+        </blockquote>
+        <button id="start" type="button" class="btn btn-success">Start</button>
+    </body>
+
+</html>
